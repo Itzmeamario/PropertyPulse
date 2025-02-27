@@ -1,9 +1,11 @@
 import '@/assets/styles/globals.css';
+import 'photoswipe/dist/photoswipe.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AuthProvider from '@/components/AuthProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GlobalContextProvider } from '@/context/GlobalContext';
 
 export const metadata = {
   title: 'Property Pulse',
@@ -14,14 +16,16 @@ export const metadata = {
 const MainLayout = ({ children }) => {
   return (
     <AuthProvider>
-      <html>
-        <body>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <ToastContainer />
-        </body>
-      </html>
+      <GlobalContextProvider>
+        <html>
+          <body>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <ToastContainer />
+          </body>
+        </html>
+      </GlobalContextProvider>
     </AuthProvider>
   );
 };
